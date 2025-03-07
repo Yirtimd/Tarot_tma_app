@@ -76,12 +76,12 @@ export default function CardModal({ isOpen, card, onClose }: CardModalProps) {
               {!card.isReversed ? (
                 <div className="bg-black p-3 rounded-lg border-2 border-[#FFD700] shadow-lg">
                   <h4 className="font-medium text-sm mb-1 text-[#FFD700]">Прямое положение</h4>
-                  <p className="text-sm bg-gradient-to-b from-[#ffd700] to-[#b8860b] bg-clip-text text-transparent">{card.upright}</p>
+                  <p className="text-sm text-white">{card.upright}</p>
                 </div>
               ) : (
                 <div className="bg-black p-3 rounded-lg border-2 border-[#FFD700] shadow-lg">
                   <h4 className="font-medium text-sm mb-1 text-[#FFD700]">Перевернутое положение</h4>
-                  <p className="text-sm bg-gradient-to-b from-[#ffd700] to-[#b8860b] bg-clip-text text-transparent">{card.reversed}</p>
+                  <p className="text-sm text-white">{card.reversed}</p>
                 </div>
               )}
             </div>
