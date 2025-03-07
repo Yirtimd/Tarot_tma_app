@@ -1,9 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Kings&family=Pacifico&family=Sarina&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 
 .preserve-3d {
     transform-style: preserve-3d;
     perspective: 1000px;
   }
+
+  body {
+    min-height: 100vh;
+    background: rgb(28, 14, 1);
+  }
+
+  .pacifico-regular {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.5rem; /* или можно использовать text-4xl в Tailwind */
+    background: linear-gradient(to bottom, #ffd700, #b8860b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+  
+  

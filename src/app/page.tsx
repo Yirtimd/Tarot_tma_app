@@ -70,7 +70,7 @@ export default function Home() {
   }
 
   return (
-    <main className={`min-h-screen bg-gradient-to-b from-purple-900 to-indigo-900 p-4 
+    <main className={`min-h-screen p-4 
       ${!isTelegramWebApp ? 'max-w-md mx-auto' : ''}`}>
       
       {!isTelegramWebApp && (
@@ -79,7 +79,9 @@ export default function Home() {
         </div>
       )}
 
-      <h1 className="text-3xl text-white text-center mb-8 font-mystery">Tarot Prediction</h1>
+      <div className="flex justify-center">
+        <h1 className="pacifico-regular text-4xl text-[#FFD700]">Tarot Prediction</h1>
+      </div>
 
       {/* Компонент колоды */}
       <Deck 
