@@ -79,10 +79,6 @@ export default function Home() {
         </div>
       )}
 
-      <div className="flex justify-center">
-        <h1 className="pacifico-regular text-4xl text-[#FFD700]">Tarot Prediction</h1>
-      </div>
-
       {/* Компонент колоды */}
       <Deck 
         isShuffled={isDeckShuffled}
