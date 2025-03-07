@@ -73,58 +73,46 @@ export default function Deck({ isShuffled, cards, onShuffle, onCardClick }: Deck
           </button>
         </div>
       ) : (
-        <div className="flex flex-col items-center gap-8">
-          <div className="w-[85%] h-auto flex flex-wrap md:flex-nowrap justify-center md:justify-between items-center gap-4 animate-fadeIn">
-            {cards.map((card, index) => (
-              <div
-                key={card.id}
-                className={`
-                  relative cursor-pointer bg-black rounded-lg
-                  w-[45%] aspect-[3/5] md:w-[22%] md:aspect-[3/5]
-                  ${index < 2 ? 'self-start' : 'self-end'}
-                  md:self-auto
-                `}
-                onClick={() => onCardClick(index)}
-              >
-                {/* Основная карта */}
-                <div className="absolute inset-0 rounded-lg shadow-lg overflow-hidden preserve-3d">
-                  {/* Добавляем подложку */}
-                  <div className="absolute inset-0 bg-[rgb(28,14,1)]"></div>
-                  <div className={`w-full h-full relative transition-transform duration-500 
-                    ${card.isReversed ? 'animate-cardFlip' : ''}`}
-                  >
-                    <img
-                      src={card.image}
-                      alt={card.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+        // Расклад карт
+        <div className="w-[85%] h-[70vh] md:h-auto flex flex-wrap md:flex-nowrap justify-center md:justify-between items-center gap-4 animate-fadeIn">
+          {cards.map((card, index) => (
+            <div
+              key={card.id}
+              className={`
+                relative cursor-pointer bg-black rounded-lg
+                w-[45%] aspect-[3/5] md:w-[22%] md:aspect-[3/5]
+                ${index < 2 ? 'self-start' : 'self-end'}
+                md:self-auto
+              `}
+              onClick={() => onCardClick(index)}
+            >
+              {/* Основная карта */}
+              <div className="absolute inset-0 rounded-lg shadow-lg overflow-hidden preserve-3d">
+                {/* Добавляем подложку */}
+                <div className="absolute inset-0 bg-[rgb(28,14,1)]"></div>
+                <div className={`w-full h-full relative transition-transform duration-500 
+                  ${card.isReversed ? 'animate-cardFlip' : ''}`}
+                >
+                  <img
+                    src={card.image}
+                    alt={card.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-
-                {/* Индикатор перевёрнутой карты */}
-                {card.isReversed && (
-                  <div className="absolute top-[5%] right-[5%] bg-[#b8860b] w-6 h-6 rounded-full flex items-center justify-center shadow-sm z-10">
-                    <img 
-                      src="/icons/res_b.svg" 
-                      alt="reversed" 
-                      className="w-4 h-4"
-                    />
-                  </div>
-                )}
               </div>
-            ))}
-          </div>
 
-          <button 
-            onClick={onShuffle}
-            className="relative bg-black px-12 py-4 rounded-lg shadow-lg 
-            hover:scale-105 transition-transform duration-300 font-medium text-lg
-            border-2 border-[#ffd700]"
-          >
-            <span className="bg-gradient-to-b from-[#ffd700] to-[#b8860b] bg-clip-text text-transparent">
-              Назад
-            </span>
-          </button>
+              {/* Индикатор перевёрнутой карты */}
+              {card.isReversed && (
+                <div className="absolute top-[5%] right-[5%] bg-[#b8860b] w-6 h-6 rounded-full flex items-center justify-center shadow-sm z-10">
+                  <img 
+                    src="/icons/res_b.svg" 
+                    alt="reversed" 
+                    className="w-4 h-4"
+                  />
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       )}
     </div>

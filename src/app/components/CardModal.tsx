@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { TarotCard } from '../page'
 
 interface CardModalProps {
@@ -9,6 +9,8 @@ interface CardModalProps {
 }
 
 export default function CardModal({ isOpen, card, onClose }: CardModalProps) {
+    const [isFullscreen, setIsFullscreen] = useState(false)
+    
     useEffect(() => {
       if (typeof document !== 'undefined') {
         document.body.style.overflow = isOpen ? 'hidden' : 'auto'
@@ -34,19 +36,31 @@ export default function CardModal({ isOpen, card, onClose }: CardModalProps) {
           </button>
           
           {/* Контейнер для карты */}
-          <div className="flex justify-center mb-6">
-            <div className="w-48 h-80 relative">
+          <div className={`flex justify-center mb-6 ${isFullscreen ? 'fixed inset-0 z-50 bg-black bg-opacity-90' : ''}`}>
+            <div 
+              className={`relative transition-all duration-300 ${
+                isFullscreen 
+                  ? 'w-full h-full flex items-center justify-center' 
+                  : 'w-48 h-80'
+              }`}
+              onClick={() => setIsFullscreen(!isFullscreen)}
+            >
               <img 
                 src={card.image} 
                 alt={card.name} 
-                className={`w-full h-full object-cover rounded-lg shadow-lg ${
-                  card.isReversed ? 'animate-cardFlip' : ''
-                }`}
+                className={`
+                  ${isFullscreen 
+                    ? 'max-h-screen max-w-full object-contain' 
+                    : 'w-full h-full object-cover'
+                  } 
+                  rounded-lg shadow-lg cursor-pointer
+                  ${card.isReversed ? 'animate-cardFlip' : ''}
+                `}
               />
             </div>
           </div>
           
-          <div className="space-y-4 text-white">
+          <div className={`space-y-4 text-white ${isFullscreen ? 'hidden' : ''}`}>
             <h2 className="text-2xl font-bold text-center bg-gradient-to-b from-[#ffd700] to-[#b8860b] bg-clip-text text-transparent">
               {card.name}
             </h2>
