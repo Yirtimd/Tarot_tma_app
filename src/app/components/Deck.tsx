@@ -69,11 +69,11 @@ export default function Deck({ isShuffled, cards, onShuffle, onCardClick }: Deck
         </div>
       ) : (
         // Расклад карт
-        <div className="w-full flex flex-wrap justify-center gap-4 animate-fadeIn">
+        <div className="w-[85%] flex justify-between items-center animate-fadeIn">
           {cards.map((card, index) => (
             <div
               key={card.id}
-              className="relative w-48 h-80 transition-all duration-300 hover:-translate-y-2 cursor-pointer bg-gradient-to-b from-purple-800 to-pink-800 rounded-lg"
+              className="relative w-[22%] aspect-[3/5] transition-all duration-300 hover:-translate-y-2 cursor-pointer bg-gradient-to-b from-purple-800 to-pink-800 rounded-lg"
               onClick={() => onCardClick(index)}
             >
               {/* Основная карта */}
@@ -91,7 +91,7 @@ export default function Deck({ isShuffled, cards, onShuffle, onCardClick }: Deck
 
               {/* Индикатор перевёрнутой карты */}
               {card.isReversed && (
-                <div className="absolute top-2 right-2 bg-red-500 text-white text-sm px-3 py-1 rounded-full shadow-sm z-10">
+                <div className="absolute top-[5%] right-[5%] bg-red-500 text-white text-[min(2vw,0.875rem)] px-[0.5em] py-[0.25em] rounded-full shadow-sm z-10">
                   rev
                 </div>
               )}
